@@ -1,7 +1,8 @@
-
+import React from "react";
+import ReactDOM from "react-dom";
 //React.createElement(Object)  ==> HTML(Browser rendering)
 
-const parent = React.createElement("div" , {id:"parent"}, [React.createElement("div",{id:"child"},React.createElement("h1",{id:"heading"},"Complex structure")),
+const parent = React.createElement("div" , {id:"parent"}, [React.createElement("div",{id:"child"},React.createElement("h1",{id:"heading"},"This is Namste React 🚀 ")),
 React.createElement("div",{id:"child"},React.createElement("h1",{id:"heading"},"Complex structure"))])
 
 
