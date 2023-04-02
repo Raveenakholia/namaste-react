@@ -19,15 +19,17 @@ const jsxHeading = <h1>
     hello
     </h1>;
 
-const Title = ()=>{
+const Title = ()=>(
     <h1>This is title</h1>
-}
+)
 
 //component compositions
 const HeadingComponent = ()=>{
     return (
         <div id="container">
+            {Title()}
             <Title />
+            <Title></Title>
             <h1 className="heading">Namaste React from Functional Component</h1>
         </div>
         
