@@ -5,8 +5,17 @@ import ReactDOM from "react-dom/client";
 *  Header
 * - Logo
 * - Nav Items  
+* Body
+* -Search
+* - Restraunt Container
+*   Rest Card
+*     - image, Name of the res, cuisines, delivery time , Star Rating
 *
-*
+* Footer
+* -copyright
+*-link
+*-address
+*-contact
 */
 
 const Header = () =>{
@@ -27,10 +36,30 @@ const Header = () =>{
         </div>
     )
 }
+
+const RestraunantCard = ()=>{
+    return(
+        <div className="res-card">
+            <h3>Meghna Foods</h3>
+        </div>
+    )
+}
+
+const Body = ()=>{
+    return(
+        <div className="body">
+            <div className="search">Serach</div>
+            <div className="res-container">
+                <RestraunantCard/>
+            </div>
+        </div>
+    )
+}
 const AppLayout = ()=>{
     return (
         <div className="app">
             <Header/>
+            <Body />
         </div>
     )
 }
