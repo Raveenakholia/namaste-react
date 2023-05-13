@@ -1,60 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Header from "./components/Header";
+import Body from "./components/Body";
 
-/*
-*  Header
-* - Logo
-* - Nav Items  
-* Body
-* -Search
-* - Restraunt Container
-*   Rest Card
-*     - image, Name of the res, cuisines, delivery time , Star Rating
-*
-* Footer
-* -copyright
-*-link
-*-address
-*-contact
-*/
 
-const Header = () =>{
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png"/>
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-
-        </div>
-    )
-}
-
-const RestraunantCard = ()=>{
-    return(
-        <div className="res-card">
-            <h3>Meghna Foods</h3>
-        </div>
-    )
-}
-
-const Body = ()=>{
-    return(
-        <div className="body">
-            <div className="search">Serach</div>
-            <div className="res-container">
-                <RestraunantCard/>
-            </div>
-        </div>
-    )
-}
 const AppLayout = ()=>{
     return (
         <div className="app">

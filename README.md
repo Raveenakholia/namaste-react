@@ -135,3 +135,22 @@
 # `~`version = 	Approximately equivalent to version, i.e., only accept new patch versions(`~`1.1.2)
 #  `^`version =	Compatible with version, i.e., accept new minor and patch versions(`^`2.1.3)
 # version  =   Must match version exactly(2.1.3)
+
+
+# Food Ordering App
+
+
+*  Header
+* - Logo
+* - Nav Items  
+* Body
+* -Search
+* - Restraunt Container
+*   Rest Card
+*     - image, Name of the res, cuisines, delivery time , Star Rating
+*
+* Footer
+* -copyright
+* -link
+* -address
+* -contact
