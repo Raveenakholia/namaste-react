@@ -154,3 +154,15 @@
 * -link
 * -address
 * -contact
+
+# Types of Export/import
+
+- Default Export/Import
+# export default <name of component>
+# import Component from "path"
+
+
+-Named Export/Import
+# export const <name of component>
+# import {Component} from "path"
+
