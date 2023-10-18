@@ -166,3 +166,7 @@
 # export const <name of component>
 # import {Component} from "path"
 
+
+# BACK IN THE GAME ###
+# 18 october 2023 ##
+
