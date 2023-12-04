@@ -1,4 +1,5 @@
 import {LOGO_URL} from '../utils/constants';
+import React from 'react';
 const Header = () =>{
     return (
         <div className="header">
