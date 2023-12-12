@@ -25,6 +25,8 @@
     background-color: #f0f0f0;
     padding: 5px;
     margin: 5px;
+    color: black;
+    text-decoration: none !important;
 }
 
 .res-card:hover {
@@ -43,6 +45,10 @@
 .res-container{
     display: flex;
     flex-wrap: wrap;
+    text-decoration: none !important;
+}
+.res-container>a{
+    text-decoration: none !important;
 }
 .filter {
     margin-top: 10px;
@@ -62,4 +68,43 @@
     height: 200px;
     width: 200px;
     background-color: #f0f0f0;
+}
+
+.login-btn {
+    padding: 10px 20px;
+    margin: 10px 5px;
+}
+.ErrorPage{
+    display: flex;
+    border: 1px solid red;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: red;
+}
+
+.filter{
+    display: flex;
+}
+.search-btn{
+    margin-left: 5px;
+}
+.menu-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    border: 1px solid green;
+    border-radius: 4px;
+    flex-direction: column;
+    margin: auto;
+    position: relative;
+    width: 300px;
+    margin-top: 20px;
+    padding: 10px;
+
+}
+.menu-card>ul{
+    text-decoration: none;
 }

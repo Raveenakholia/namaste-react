@@ -2,20 +2,53 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import React from "react";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import About from "./components/About";
+import ContactUs from "./components/ContactUs.js";
+import Error from "./components/Error.js";
+import RestrauntMenu from "./components/RestrauntMenu.js";
 
 const AppLayout = ()=>{
     return (
         <div className="app">
             <Header />
-            <Body />
+            <Outlet />
         </div>
-        
-
-    )
+        )
 }
+
+const router = createBrowserRouter([
+    {
+        path:"/",
+        element: <AppLayout/>,
+        errorElement : <Error/>,
+        children:[
+        {
+            path:"/",
+            element : <Body/>
+        },    
+        {
+            path:"/about",
+            element : <About/>
+        },
+        {
+            path:"/contact",
+            element : <ContactUs/>
+        },
+        {
+            path:"/restraunts/:resId",
+            element : <RestrauntMenu/>
+        }
+    
+    ]
+    },
+    
+])
+
+
  
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>) 
+root.render(<RouterProvider router={router}/>) 
 
 
 
