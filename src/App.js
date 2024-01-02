@@ -1,21 +1,36 @@
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs.js";
 import Error from "./components/Error.js";
 import RestrauntMenu from "./components/RestrauntMenu.js";
+import userContext from "./utils/userContext.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
+import Cart from './components/Cart.js'
 
 const AppLayout = ()=>{
     return (
         <div className="app">
-            <Header />
+           <Provider store={appStore}>
+           <userContext.Provider value={{loggedInUser:"raveena"}}>
+             <Header />
+            </userContext.Provider>
             <Outlet />
+            </Provider>
         </div>
         )
 }
+//Chunking
+//dynamic import
+//dynamic loading
+//code splitting
+//on demand loading
+//lazy loading
+const Grocery = lazy(()=>import("./components/Grocery.js"))
 
 const router = createBrowserRouter([
     {
@@ -38,7 +53,15 @@ const router = createBrowserRouter([
         {
             path:"/restraunts/:resId",
             element : <RestrauntMenu/>
-        }
+        },
+        {
+            path:"/grocery",
+            element : <Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>
+        },
+        {
+            path:"/cart",
+            element : <Cart/>
+        },
     
     ]
     },

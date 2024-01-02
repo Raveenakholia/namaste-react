@@ -1,42 +1,35 @@
-import RestraunantCard from './RestrauntCard';
+import RestraunantCard ,{showVegLabel} from './RestrauntCard';
 import restaurantList from '../utils/mockData';
 import React, { useEffect, useState } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
+import useOnlineStatus from '../utils/useOnlineStatus';
+import useRestrauntData from '../utils/useRestrauntData';
 const Body = ()=>{
-  const [listOfRestauant, setlistOfRestratunt] = useState([]);
-  const [filteredlistOfRestauant, setFilteredlistOfRestratunt] = useState([])
+  const [listOfRestauant, filteredlistOfRestauant, setlistOfRestratunt,setFilteredlistOfRestratunt] = useRestrauntData();
   const filteredData = restaurantList.map((res)=>{return res.data.avgRating}).filter(d=> d>4);
   const [inputTxtName, setInutTxtName] = useState("")
-  console.log('avg rating' +filteredData);
+  
+ // console.log('list of  restraunts' +listOfRestauant);
   
   //whenerver astate variable update react triggers reconciliation cycle(re-renders the component);
   console.log("Body Rendered");
-  useEffect(()=>{
-    fetchData();
-  },[]);
-
-  
-  const fetchData = async ()=>{
-    const data = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.9247697&lng=75.88628510000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-    const jsonData =  await data.json();
-    console.log(jsonData);
-    //optional Chaining
-    setlistOfRestratunt(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredlistOfRestratunt(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  }
+  const ShowVegLabel = showVegLabel(RestraunantCard);
+   //check whthter user is connected to internet
+   const onlineStatus =  useOnlineStatus();
+   if(onlineStatus==false) return <h1>Ooops Please check your internet connection you are offline</h1>
   //Conditional Rendering
   if(listOfRestauant.length ==0){
     return <Shimmer />
   }
    return(
         <div className="body">
-            <div className='filter'>
-             <div className='search'>
-                <input type="text" className='search-box' value={inputTxtName}
+            <div className='filter flex'>
+             <div className='search px-2'>
+                <input type="text" className='border border-solid border-black' value={inputTxtName}
                 onChange={(e)=>setInutTxtName(e.target.value)}
                 />
-                <button className='search-btn'
+                <button className='px-4 py-1 bg-green-200 m-4 rounded-md'
                 onClick={()=>{
                   const filteredList = listOfRestauant.filter((res)=>
                     res.info.name.toLowerCase().includes(inputTxtName.toLowerCase()))
@@ -45,7 +38,7 @@ const Body = ()=>{
                 }}
                 >Search</button>
              </div>   
-            <button className="filter-btn" 
+            <button className="px-4 py-1 bg-gray-100 m-4 rounded-md" 
                onClick={()=> {
                 const filteredList = listOfRestauant.filter((res)=>res.info.avgRating>4);
                 setlistOfRestratunt(filteredList);
@@ -56,12 +49,16 @@ const Body = ()=>{
                Top Rated Restaurants</button>
             </div>
            
-            <div className="res-container">
-            {console.log(listOfRestauant)}
-              { 
-                filteredlistOfRestauant.map((restraunant)=>(
-                <Link key={restraunant.info.id} to={"/restraunts/"+ restraunant.info.id}><RestraunantCard  resData={restraunant.info}/></Link>
-              ))} 
+            <div className="flex flex-wrap">
+              {console.log(listOfRestauant)}
+                { 
+                  filteredlistOfRestauant.map((restraunant)=>(
+                  <Link key={restraunant.info.id} to={"/restraunts/"+ restraunant.info.id}>
+                 {restraunant.info.veg==true?  <ShowVegLabel resData={restraunant.info}/>:<RestraunantCard  resData={restraunant.info}/>}
+                 
+                  
+                  </Link>
+                ))} 
             </div>
         </div>
     )

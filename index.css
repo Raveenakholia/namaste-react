@@ -1,4 +1,8 @@
-.header{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .header{
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -108,3 +112,20 @@
 .menu-card>ul{
     text-decoration: none;
 }
+
+.about-user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rebeccapurple;
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+    width: 300px;
+    margin-top: 20px;
+    padding: 10px;
+}
+.about-user img{
+    width: 20%;
+} */
