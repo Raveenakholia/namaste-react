@@ -55,9 +55,7 @@ const Body = ()=>{
                   filteredlistOfRestauant.map((restraunant)=>(
                   <Link key={restraunant.info.id} to={"/restraunts/"+ restraunant.info.id}>
                  {restraunant.info.veg==true?  <ShowVegLabel resData={restraunant.info}/>:<RestraunantCard  resData={restraunant.info}/>}
-                 
-                  
-                  </Link>
+                 </Link>
                 ))} 
             </div>
         </div>

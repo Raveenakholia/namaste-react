@@ -167,7 +167,8 @@
 # import {Component} from "path"
 
 
-# BACK IN THE GAME ###
-# 18 october 2023 ##
-# 30 october 2023 ##
+# Types of testing
+- Unit Testing
+- Integration Testing
+- End to End Testing (e2e)
 
